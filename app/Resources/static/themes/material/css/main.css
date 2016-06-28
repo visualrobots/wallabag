@@ -166,6 +166,10 @@ main,
   line-height: 30px;
 }
 
+.results > * {
+    display: inline-block;
+}
+
 .results .nb-results,
 .results .pagination {
   margin: 15px;

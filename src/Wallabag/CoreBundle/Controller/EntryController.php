@@ -245,25 +245,28 @@ class EntryController extends Controller
     {
         $repository = $this->get('wallabag_core.entry_repository');
 
+        $sortBy = $request->get('sort', 'id');
+        $direction = $request->get('direction', 'DESC');
+
         switch ($type) {
             case 'untagged':
                 $qb = $repository->getBuilderForUntaggedByUser($this->getUser()->getId());
 
                 break;
             case 'starred':
-                $qb = $repository->getBuilderForStarredByUser($this->getUser()->getId());
+                $qb = $repository->getBuilderForStarredByUser($this->getUser()->getId(), $sortBy, $direction);
                 break;
 
             case 'archive':
-                $qb = $repository->getBuilderForArchiveByUser($this->getUser()->getId());
+                $qb = $repository->getBuilderForArchiveByUser($this->getUser()->getId(), $sortBy, $direction);
                 break;
 
             case 'unread':
-                $qb = $repository->getBuilderForUnreadByUser($this->getUser()->getId());
+                $qb = $repository->getBuilderForUnreadByUser($this->getUser()->getId(), $sortBy, $direction);
                 break;
 
             case 'all':
-                $qb = $repository->getBuilderForAllByUser($this->getUser()->getId());
+                $qb = $repository->getBuilderForAllByUser($this->getUser()->getId(), $sortBy, $direction);
                 break;
 
             default:

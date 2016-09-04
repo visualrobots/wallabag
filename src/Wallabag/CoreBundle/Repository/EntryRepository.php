@@ -13,79 +13,85 @@ class EntryRepository extends EntityRepository
     /**
      * Return a query builder to used by other getBuilderFor* method.
      *
-     * @param int $userId
+     * @param int    $userId
+     * @param string $sortBy    Field to sort
+     * @param string $direction Direction of the order
      *
      * @return QueryBuilder
      */
-    private function getBuilderByUser($userId)
+    private function getBuilderByUser($userId, $sortBy = 'createdAt', $direction = 'desc')
     {
         return $this->createQueryBuilder('e')
             ->leftJoin('e.user', 'u')
             ->andWhere('u.id = :userId')->setParameter('userId', $userId)
-            ->orderBy('e.createdAt', 'desc')
+            ->orderBy('e.'.$sortBy, $direction)
         ;
     }
 
     /**
      * Retrieves all entries for a user.
      *
-     * @param int $userId
+     * @param int    $userId
+     * @param string $sortBy    Field to sort
+     * @param string $direction Direction of the order
      *
      * @return QueryBuilder
      */
     public function getBuilderForAllByUser($userId, $sortBy = 'id', $direction = 'DESC')
     {
         return $this
-            ->getBuilderByUser($userId)
-            ->orderBy('e.'.$sortBy, $direction)
+            ->getBuilderByUser($userId, $sortBy, $direction)
         ;
     }
 
     /**
      * Retrieves unread entries for a user.
      *
-     * @param int $userId
+     * @param int    $userId
+     * @param string $sortBy    Field to sort
+     * @param string $direction Direction of the order
      *
      * @return QueryBuilder
      */
     public function getBuilderForUnreadByUser($userId, $sortBy = 'id', $direction = 'DESC')
     {
         return $this
-            ->getBuilderByUser($userId)
+            ->getBuilderByUser($userId, $sortBy, $direction)
             ->andWhere('e.isArchived = false')
-            ->orderBy('e.'.$sortBy, $direction)
         ;
     }
 
     /**
      * Retrieves read entries for a user.
      *
-     * @param int $userId
+     * @param int    $userId
+     * @param string $sortBy    Field to sort
+     * @param string $direction Direction of the order
      *
      * @return QueryBuilder
      */
     public function getBuilderForArchiveByUser($userId, $sortBy = 'id', $direction = 'DESC')
     {
         return $this
-            ->getBuilderByUser($userId)
+            ->getBuilderByUser($userId, $sortBy, $direction)
             ->andWhere('e.isArchived = true')
-            ->orderBy('e.'.$sortBy, $direction)
         ;
     }
 
     /**
      * Retrieves starred entries for a user.
      *
-     * @param int $userId
+     * @param int    $userId
+     * @param string $sortBy    Field to sort
+     * @param string $direction Direction of the order
      *
      * @return QueryBuilder
      */
     public function getBuilderForStarredByUser($userId, $sortBy = 'id', $direction = 'DESC')
     {
         return $this
-            ->getBuilderByUser($userId)
+            ->getBuilderByUser($userId, $sortBy, $direction)
             ->andWhere('e.isStarred = true')
-            ->orderBy('e.'.$sortBy, $direction)
         ;
     }
 

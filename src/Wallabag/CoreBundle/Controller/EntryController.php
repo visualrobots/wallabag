@@ -245,8 +245,12 @@ class EntryController extends Controller
     {
         $repository = $this->get('wallabag_core.entry_repository');
 
-        $sortBy = $request->get('sort', 'id');
-        $direction = $request->get('direction', 'DESC');
+        $sortBy = 'id';
+        if (in_array($request->get('sort', 'id'), ['id', 'created_at', 'title', 'updated_at'], true)) {
+            $sortBy = $request->get('sort', 'id');
+        }
+
+        $direction = 'DESC' === $request->get('direction') ? 'DESC' : 'ASC';
 
         switch ($type) {
             case 'untagged':

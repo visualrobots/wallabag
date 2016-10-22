@@ -167,7 +167,7 @@ main,
 }
 
 .results > * {
-    display: inline-block;
+  display: inline-block;
 }
 
 .results .nb-results,

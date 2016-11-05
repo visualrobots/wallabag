@@ -37,6 +37,7 @@ menu:
         search: 'Pesquisa'
         filter_entries: 'Filtrar entradas'
         export: 'Exportar'
+        # sort_entries: 'Sort entries'
     search_form:
         input_label: 'Digite aqui sua pesquisa'
 
@@ -173,6 +174,15 @@ entry:
         action:
             clear: 'Limpar'
             filter: 'Filtro'
+    sort:
+        # title: 'Sort options'
+        # status_label: 'Sort by'
+        # by:
+        #    creation_date: 'Creation date'
+        #    title: 'Title'
+        #    last_updated: 'Last updated'
+        #ascending: 'Asencending'
+        # descending: 'Descending'
     view:
         left_menu:
             back_to_top: 'Voltar ao topo'

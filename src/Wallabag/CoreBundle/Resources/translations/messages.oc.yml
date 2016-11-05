@@ -37,6 +37,7 @@ menu:
         search: 'Cercar'
         filter_entries: 'Filtrar los articles'
         export: 'Exportar'
+        # sort_entries: 'Sort entries'
     search_form:
         input_label: 'Picatz vòstre mot-clau a cercar aquí'
 
@@ -186,6 +187,15 @@ entry:
         action:
             clear: 'Escafar'
             filter: 'Filtrar'
+    sort:
+        # title: 'Sort options'
+        # status_label: 'Sort by'
+        # by:
+        #    creation_date: 'Creation date'
+        #    title: 'Title'
+        #    last_updated: 'Last updated'
+        #ascending: 'Asencending'
+        # descending: 'Descending'
     view:
         left_menu:
             back_to_top: 'Tornar en naut'

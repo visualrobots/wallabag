@@ -37,6 +37,7 @@ menu:
         search: 'Suche'
         filter_entries: 'Artikel filtern'
         export: 'Exportieren'
+        # sort_entries: 'Sort entries'
     search_form:
         input_label: 'Suchbegriff hier eingeben'
 
@@ -186,6 +187,15 @@ entry:
         action:
             clear: 'Zurücksetzen'
             filter: 'Filtern'
+    sort:
+        # title: 'Sort options'
+        # status_label: 'Sort by'
+        # by:
+        #    creation_date: 'Creation date'
+        #    title: 'Title'
+        #    last_updated: 'Last updated'
+        #ascending: 'Asencending'
+        # descending: 'Descending'
     view:
         left_menu:
             back_to_top: 'Nach oben'

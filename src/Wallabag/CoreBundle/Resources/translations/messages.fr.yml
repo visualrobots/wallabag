@@ -37,6 +37,7 @@ menu:
         search: "Rechercher"
         filter_entries: "Filtrer les articles"
         export: "Exporter"
+        sort_entries: 'Trier les articles'
     search_form:
         input_label: "Saisissez votre terme de recherche"
 
@@ -167,7 +168,7 @@ entry:
         export_title: "Exporter"
     filters:
         title: "Filtres"
-        status_label: "Status"
+        status_label: "Statut"
         archived_label: "Lus"
         starred_label: "Favoris"
         unread_label: "Non lus"
@@ -186,6 +187,15 @@ entry:
         action:
             clear: "Effacer"
             filter: "Filtrer"
+    sort:
+        title: 'Options de tri'
+        status_label: 'Trier par'
+        by:
+            creation_date: 'Date de création'
+            title: 'Titre'
+            last_updated: 'Dernière mise à jour'
+        ascending: 'Ascendant'
+        descending: 'Descendant'
     view:
         left_menu:
             back_to_top: "Revenir en haut"

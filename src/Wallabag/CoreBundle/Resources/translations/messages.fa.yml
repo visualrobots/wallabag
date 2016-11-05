@@ -37,6 +37,7 @@ menu:
         search: 'جستجو'
         filter_entries: 'فیلترکردن مقاله‌ها'
         export: 'برون‌بری'
+        # sort_entries: 'Sort entries'
     search_form:
         input_label: 'جستجوی خود را این‌جا بنویسید:'
 
@@ -186,6 +187,15 @@ entry:
         action:
             clear: 'از نو'
             filter: 'فیلتر'
+    sort:
+        # title: 'Sort options'
+        # status_label: 'Sort by'
+        # by:
+        #    creation_date: 'Creation date'
+        #    title: 'Title'
+        #    last_updated: 'Last updated'
+        #ascending: 'Asencending'
+        # descending: 'Descending'
     view:
         left_menu:
             back_to_top: 'بازگشت به بالای صفحه'

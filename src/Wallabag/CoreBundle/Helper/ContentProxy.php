@@ -66,6 +66,7 @@ class ContentProxy
         $entry->setUrl($content['url'] ?: $url);
         $entry->setTitle($title);
         $entry->setContent($html);
+        $entry->setPublishedAt($content['date']);
 
         $entry->setLanguage($content['language']);
         $entry->setMimetype($content['content_type']);

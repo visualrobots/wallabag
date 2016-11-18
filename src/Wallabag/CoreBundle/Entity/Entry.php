@@ -119,6 +119,15 @@ class Entry
     private $updatedAt;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="published_at", type="datetime")
+     *
+     * @Groups({"entries_for_user", "export_all"})
+     */
+    private $publishedAt;
+
+    /**
      * @ORM\OneToMany(targetEntity="Wallabag\AnnotationBundle\Entity\Annotation", mappedBy="entry", cascade={"persist", "remove"})
      * @ORM\JoinTable
      *
@@ -668,5 +677,25 @@ class Entry
     public function cleanUuid()
     {
         $this->uuid = null;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
+
+    /**
+     * @param mixed $publishedAt
+     *
+     * @return Entry
+     */
+    public function setPublishedAt($publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+
+        return $this;
     }
 }

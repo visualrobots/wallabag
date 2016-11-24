@@ -246,6 +246,7 @@ class EntryRestController extends WallabagRestController
      *          {"name"="tags", "dataType"="string", "required"=false, "format"="tag1,tag2,tag3", "description"="a comma-separated list of tags."},
      *          {"name"="archive", "dataType"="integer", "required"=false, "format"="1 or 0", "description"="archived the entry."},
      *          {"name"="starred", "dataType"="integer", "required"=false, "format"="1 or 0", "description"="starred the entry."},
+     *          {"name"="progress", "dataType"="integer", "required"=false, "format"="A percentage between 0 and 100", "description"="changed progress."},
      *      }
      * )
      *
@@ -259,6 +260,7 @@ class EntryRestController extends WallabagRestController
         $title = $request->request->get('title');
         $isArchived = $request->request->get('archive');
         $isStarred = $request->request->get('starred');
+        $progress = $request->request->get('progress');
 
         if (!is_null($title)) {
             $entry->setTitle($title);
@@ -270,6 +272,13 @@ class EntryRestController extends WallabagRestController
 
         if (!is_null($isStarred)) {
             $entry->setStarred((bool) $isStarred);
+        }
+
+        if (!is_null($progress)) {
+            $progress = (int) $progress;
+            if ($progress >= 0 && $progress <= 100) {
+                $entry->setProgress((int) $progress);
+            }
         }
 
         $tags = $request->request->get('tags', '');
@@ -435,6 +444,29 @@ class EntryRestController extends WallabagRestController
         $em->flush();
 
         $json = $this->get('serializer')->serialize($entry, 'json');
+
+        return (new JsonResponse())->setJson($json);
+    }
+
+    /**
+     * Get the progress of an entry.
+     *
+     * @ApiDoc(
+     *     requirements={
+     *          {"name"="entry", "dataType"="integer", "requirement"="\w+", "description"="The entry ID"}
+     *     }
+     * )
+     *
+     * @param Entry $entry
+     *
+     * @return JsonResponse
+     */
+    public function getEntriesProgressAction(Entry $entry)
+    {
+        $this->validateAuthentication();
+        $this->validateUserAccess($entry->getUser()->getId());
+
+        $json = $this->get('serializer')->serialize($entry->getProgress(), 'json');
 
         return (new JsonResponse())->setJson($json);
     }

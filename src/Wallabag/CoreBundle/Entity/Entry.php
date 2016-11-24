@@ -190,6 +190,15 @@ class Entry
     private $httpStatus;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="progress", type="integer", nullable=true)
+     *
+     * @Groups({"entries_for_user", "export_all"})
+     */
+    private $progress = 0;
+
+    /**
      * @Exclude
      *
      * @ORM\ManyToOne(targetEntity="Wallabag\UserBundle\Entity\User", inversedBy="entries")
@@ -697,5 +706,29 @@ class Entry
         $this->httpStatus = $httpStatus;
 
         return $this;
+    }
+
+    /**
+     * Set progress.
+     *
+     * @param int $progress
+     *
+     * @return Entry
+     */
+    public function setProgress($progress)
+    {
+        $this->progress = $progress;
+
+        return $this;
+    }
+
+    /**
+     * Get progress.
+     *
+     * @return int
+     */
+    public function getProgress()
+    {
+        return $this->progress;
     }
 }
